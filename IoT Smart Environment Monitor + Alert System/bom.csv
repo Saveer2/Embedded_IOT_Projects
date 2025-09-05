@@ -1,8 +1,0 @@
-﻿Name,Quantity,Component
-"U1",1," Arduino Uno R3"
-"U2",1," LCD 16 x 2"
-"Rpot1",1,"250 kΩ Potentiometer"
-"R1, R2",2,"220 Ω Resistor"
-"SERVO1",1,"Positional Micro Servo"
-"D1",1,"Red LED"
-"U4",1," Temperature Sensor [TMP36]"

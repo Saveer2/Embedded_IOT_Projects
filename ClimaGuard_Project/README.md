@@ -1,4 +1,5 @@
 ** ClimaGuard — Arduino Temperature & Humidity Monitor with Alerts ** 
+--
 
 ClimaGuard is an Arduino-based project that continuously monitors temperature and humidity using a DHT11 sensor, displays values on an OLED screen, and provides visual + audio alerts with an RGB LED module, active buzzer, and passive buzzer.
 

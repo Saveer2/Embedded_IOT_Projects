@@ -17,9 +17,9 @@ ClimaGuard is an Arduino-based project that continuously monitors temperature an
 
 1.  OLED Display: Live temperature (°C) and humidity (%) values.
 2.  RGB LED Alerts:
-🔵 Blue → Temperature below 30 °C (Normal)
-🟢 Green → Temperature between 30–35 °C (Warning)
-🔴 Red → Temperature above 35 °C (Danger)
+🔵 Blue → Temperature below 30 °C (Normal)<br>
+🟢 Green → Temperature between 30–35 °C (Warning)<br>
+🔴 Red → Temperature above 35 °C (Danger)<br>
 3.  Active Buzzer Alerts:
   * One short beep every 10 sec in Warning mode.
   * One short beep every 1 sec in Danger mode.

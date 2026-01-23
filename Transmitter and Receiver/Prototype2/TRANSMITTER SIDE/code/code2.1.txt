@@ -1,0 +1,59 @@
+#include <SPI.h>
+#include <nRF24L01.h>
+#include <RF24.h>
+#include <DHT.h>
+
+#define CE_PIN 9
+#define CSN_PIN 10
+RF24 radio(CE_PIN, CSN_PIN);
+
+const byte address[6] = "00001";
+
+#define DHTPIN 2
+#define DHTTYPE DHT11
+DHT dht(DHTPIN, DHTTYPE);
+
+void setup() {
+  Serial.begin(9600);
+  dht.begin();
+
+  if (!radio.begin()) {
+    Serial.println("NRF NOT DETECTED");
+    while (1);
+  }
+
+  radio.setChannel(76);
+  radio.setDataRate(RF24_1MBPS);
+  radio.setPALevel(RF24_PA_HIGH);
+  radio.setRetries(5, 15);
+
+  radio.openWritingPipe(address);
+  radio.stopListening();
+
+  Serial.println("Transmitter Ready");
+}
+
+void loop() {
+  float temp = dht.readTemperature();
+  float hum  = dht.readHumidity();
+
+  if (isnan(temp) || isnan(hum)) {
+    Serial.println("DHT Read Failed");
+    delay(2000);
+    return;
+  }
+
+  char data[32];
+  snprintf(data, sizeof(data), "T:%.1f H:%.1f", temp, hum);
+
+  bool ok = radio.write(&data, sizeof(data));
+
+  if (ok) {
+    Serial.print("Sent: ");
+    Serial.println(data);
+  } else {
+    Serial.println("Send Failed");
+  }
+
+  delay(2000);
+}

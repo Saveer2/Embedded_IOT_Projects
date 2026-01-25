@@ -5,7 +5,7 @@
 
 ---
 
-*Technologies Used*
+** Technologies Used
 
 Microcontrollers: Arduino, ESP32, STM32
 
